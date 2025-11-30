@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Society Maintenance Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="form-container">
+    <h2>Maintenance Payment</h2>
+
+    <form action="/submit" method="POST" enctype="multipart/form-data">
+    
+    <input type="text" name="name" placeholder="Full Name"
+           value="{{ name if name else '' }}" required>
+
+    <input type="text" name="floor" placeholder="Floor"
+           value="{{ floor if floor else '' }}" required>
+
+    <input type="text" name="flat_no" placeholder="Flat Number"
+           value="{{ flat_no if flat_no else '' }}" required>
+
+    <input type="number" name="amount" placeholder="Amount Paid"
+           value="{{ amount if amount else '' }}" required>
+
+    <label style="font-size:14px;">Upload Payment Screenshot</label>
+    <input type="file" name="image" required>
+
+    <button type="submit">Submit</button>
+
+    {% if message %}
+        <p style="text-align:center; color:green; margin-top:10px;">
+            {{ message }}
+        </p>
+    {% endif %}
+</form>
+
+
+    <br>
+    <a href="/dashboard" style="text-decoration:none;color:black;font-size:14px;">
+        👉 View Dashboard
+    </a>
+</div>
+
+</body>
+</html>
